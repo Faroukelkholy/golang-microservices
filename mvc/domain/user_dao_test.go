@@ -10,7 +10,7 @@ func TestGetUserNoUserFound(t *testing.T) {
 	// Initialization:
 
 	// Execution:
-	user, err := GetUser(0)
+	user, err := IUserDao.GetUser(0)
 
 	// Validation:
 	assert.Nil(t, user, "we were not expecting a user with id 0")
@@ -22,13 +22,13 @@ func TestGetUserNoUserFound(t *testing.T) {
 }
 
 func TestGetUserNoError(t *testing.T) {
-	user, err := GetUser(123)
+	user, err := IUserDao.GetUser(123)
 
 	assert.Nil(t, err)
 	assert.NotNil(t, user)
 
 	assert.EqualValues(t, 123, user.Id)
-	assert.EqualValues(t, "Fede", user.FirstName)
-	assert.EqualValues(t, "Leon", user.LastName)
+	assert.EqualValues(t, "Farouk", user.FirstName)
+	assert.EqualValues(t, "Elkholy", user.LastName)
 	assert.EqualValues(t, "myemail@gmail.com", user.Email)
 }

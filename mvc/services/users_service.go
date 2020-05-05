@@ -6,5 +6,12 @@ import (
 )
 
 func GetUser(userId int64) (*domain.User, *utils.ApplicationError) {
-	return domain.GetUser(userId)
+	println("services.GetUser")
+	//domain.IUserDao = &domain.UserDao{}
+	user, err := domain.IUserDao.GetUser(userId)
+	if err != nil {
+		println("error")
+		return nil, err
+	}
+	return user, nil
 }
